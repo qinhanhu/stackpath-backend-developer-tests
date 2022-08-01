@@ -28,9 +28,6 @@ func TestFizzBuzz(t *testing.T) {
 					t.Errorf("unexpected panic: recover = %v, case = %v", r, test)
 				}
 			}()
-			//if result := FizzBuzz(test.total, test.fizzAt, test.buzzAt); !stringSlicesEqual(result, test.expected){
-			//	t.Errorf("Output %q not equal to expected %q\n", result, test.expected)
-			//}
 			result := FizzBuzz(test.total, test.fizzAt, test.buzzAt)
 			assert.Equal(t, result, test.expected)
 		})
