@@ -6,13 +6,6 @@ import (
 	"testing"
 )
 
-//type fizzBuzzTest struct {
-//	name                  string
-//	total, fizzAt, buzzAt int64
-//	expected              []string
-//	wantPanic             bool
-//}
-
 var fizzBuzzTests = []struct {
 	name                  string
 	total, fizzAt, buzzAt int64
@@ -43,17 +36,6 @@ func TestFizzBuzz(t *testing.T) {
 		})
 	}
 }
-
-//func integerDivideByZeroPanic(t *testing.T) {
-//	defer func() {
-//		if r := recover(); r == nil {
-//			t.Errorf("The func did not panic as expected")
-//		}
-//	}()
-//	a := 5
-//	b := 0
-//	_ = a / b
-//}
 
 func BenchmarkFizzBuzz(b *testing.B) {
 	for i := 0; i < b.N; i++ {
