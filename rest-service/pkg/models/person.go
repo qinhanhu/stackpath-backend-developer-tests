@@ -2,8 +2,7 @@ package models
 
 import (
 	"encoding/json"
-	"errors"
-	"fmt"
+	"log"
 
 	"github.com/satori/go.uuid"
 )
@@ -58,14 +57,14 @@ func AllPeople() []*Person {
 }
 
 // FindPersonByID searches for people in `people` the by their ID.
-func FindPersonByID(id uuid.UUID) (*Person, error) {
+func FindPersonByID(id uuid.UUID) *Person {
 	for _, person := range people {
 		if person.ID == id {
-			return person, nil
+			return person
 		}
 	}
-
-	return nil, errors.New(fmt.Sprintf("user ID %s not found", id.String()))
+	log.Printf("user ID %s not found", id.String())
+	return nil
 }
 
 // FindPeopleByName performs a case-sensitive search for people in `people` by first and last name.
@@ -102,4 +101,13 @@ func (person *Person) ToJSON() (string, error) {
 	}
 
 	return string(marshaled[:]), nil
+}
+
+func AnyToJSON(data any) ([]byte, error) {
+	marshaled, err := json.Marshal(data)
+	if err != nil {
+		return []byte{}, err
+	}
+
+	return marshaled, nil
 }
