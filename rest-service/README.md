@@ -19,6 +19,7 @@
 ```
 # Tests
 * Use Postman
+![use_postman.png](https://github.com/qinhanhu/stackpath-backend-developer-tests/blob/3992445cb85c374ddc5f735857a404d5eaa107cb/rest-service/use_postman.png)
 * Use go test
 ```
 ❯ go test -v
