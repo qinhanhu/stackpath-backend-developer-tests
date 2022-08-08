@@ -25,11 +25,16 @@ func (wp *WorkPool) Submit(t task) {
 	// produce
 	wp.tasks <- t
 }
+
 func (wp *WorkPool) Work() {
 	// consume
 	for task := range wp.tasks {
 		task() // execute task
 	}
+}
+
+func (wp *WorkPool) ClosePool() {
+	close(wp.tasks)
 }
 
 // NewSimplePool creates a new SimplePool that only allows the given maximum
